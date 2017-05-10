@@ -1,0 +1,99 @@
+<div class="col-sm-offset-1 col-sm-10">
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="mainpage.myVar">
+        <div class="input-group-btn">
+            <a href="#/">
+                <button class="btn btn-info" type="button">Log-out</button>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-4"> 
+           <form >
+           <img ng-src="{{mainpage.phurl}}" class="img-thumbnail">
+            <label class="btn btn-xs btn-primary btn-file btn-block"> Change Photo
+                <input type="file" style="display: none;" id="myfile"></label>
+                <input type="submit" id="photosubmit" style="display: none;">
+                </form>
+            <h3>Friends:</h3>
+            <ul>
+                <li ng-repeat="y in mainpage.user.friends ">{{y.name}}{{y.sname}}
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="mainpage.removeFriend(y)" ng-init="mainpage.myR= y ">x</button>
+                </li>
+            </ul>
+            <button class="btn btn-xs btn-primary " type="button" data-toggle="modal" data-target="#exampleModal">Add friend</button>
+        </div>
+        <div class="col-xs-8">
+            <div>
+                <h3>{{mainpage.user.name}} {{mainpage.user.sname}}</h3> <b>Phone number:</b> <span>{{mainpage.user.phonenumber}}</span>
+                <br> <b>Country: </b> <span>{{mainpage.user.country}}</span>
+                <br> <b>City: </b> <span>{{mainpage.user.city}}</span>
+                <br> <b>Skype: </b> <span>{{mainpage.user.skype}}</span>
+                <br> <b>GitHub: </b> <span>{{mainpage.user.github}}</span>
+                <br> <b>Description: </b> <span>{{mainpage.user.description}}</span> </div>
+            <form class="form-signin">
+                <a href="#info">
+                    <button class="btn btn-xs btn-primary " type="button">Add information</button>
+                </a>
+                <br>
+                <br>
+                <input type="text" class="form-control" placeholder="Theme" ng-model="mainpage.theme">
+                <br>
+                <textarea class="form-control" rows="2" placeholder="Message" ng-model="mainpage.message"></textarea>
+                <br>
+                <button class="btn btn-xs btn-primary" type="button" ng-click="mainpage.Send()">Відправити</button>
+            </form>
+            <br>
+            <div class="panel panel-warning" ng-repeat="y in mainpage.qty">
+                <div class="panel-heading"> {{y.theme}} {{y.date | date:'HH:mm:ss (dd/MM/yyyy)'}} </div>
+                <div class="panel-body">{{y.message}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Add friend</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in mainpage.allUsers " ng-if="x.sname !==mainpage.user.sname &&    x.sname!==mainpage.user.friends[0].sname &&
+                                    x.sname!==mainpage.user.friends[1].sname &&
+                                    x.sname!==mainpage.user.friends[2].sname &&
+                                    x.sname!==mainpage.user.friends[3].sname &&
+                                    x.sname!==mainpage.user.friends[4].sname &&
+                                    x.sname!==mainpage.user.friends[5].sname &&
+                                    x.sname!==mainpage.user.friends[6].sname &&
+                                    x.sname!==mainpage.user.friends[7].sname &&
+                                    x.sname!==mainpage.user.friends[8].sname &&
+                                    x.sname!==mainpage.user.friends[9].sname &&
+                                    x.sname!==mainpage.user.friends[10].sname &&
+                                    x.sname!==mainpage.user.friends[11].sname ">
+                            <td>{{x.name}}</td>
+                            <td>{{x.sname}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="mainpage.addFriend(x)" ng-init="mainpage.myF= x ">Add</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

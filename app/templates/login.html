@@ -1,0 +1,26 @@
+<div class="col-sm-offset-4 col-sm-4">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+      <label>User name</label>
+        <input type="text" class="form-control"  required autofocus ng-model="login.nam">
+       <label>Password</label>
+        <input type="password" class="form-control" required ng-model="login.pas">
+<br>
+          <a ng-href="{{login.urlm}}"><button class="btn btn-sm btn-primary " type="button" ng-click="login.CheckUs()" >Sign in</button></a>
+          <a href="#registration"><button class="btn btn-sm btn-warning " type="button">Registration</button></a>
+      </form>
+</div>
+
+<div id="myModal" class="modal fade" >
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+<h4 class="modal-title">Welcome!!!</h4>
+</div>
+<div class="modal-body">Registration successful</div>
+<div class="modal-footer"><button class="btn btn-info" type="button" data-dismiss="modal">Close</button></div>
+</div>
+</div>
+</div> 
+
+

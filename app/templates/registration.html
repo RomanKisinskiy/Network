@@ -1,0 +1,19 @@
+<div class="col-sm-offset-4 col-sm-4">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Registration</h2>
+        <label>First name/User name</label>
+        <input type="text" class="form-control" required autofocus ng-model="registration.Un">
+        <label>Last name</label>
+        <input type="text" class="form-control" required autofocus ng-model="registration.Ln">
+        <label>Password</label>
+        <input type="password" class="form-control" required ng-model="registration.Ps">
+        <br>
+        <a href="#/">
+            <button class="btn btn-sm btn-success " type="button" ng-click="registration.RegistrUser()" data-toggle="modal" data-target="{{registration.z}}">Registration</button>
+        </a>
+        <a href="#/">
+            <button class="btn btn-sm btn-danger " type="button">Cancel</button>
+        </a>
+    </form>
+    <!--<button class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal">Показать всплывающее окно</button>-->
+</div>
