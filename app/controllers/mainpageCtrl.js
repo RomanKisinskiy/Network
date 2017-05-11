@@ -26,25 +26,35 @@ app.controller("mainpageCtrl", ["US", function (US) {
         vm.friend.name = x.name;
         vm.friend.sname = x.sname;
         vm.user.friends.push(vm.friend);
-    }
+    };
     vm.removeFriend = function (y) {
         for (i in vm.user.friends)
             if (vm.user.friends[i] == y) {
                 vm.user.friends.splice(i, 1);
             }
     }
+    vm.filterFriends = function (x) {
+        for (i in vm.user.friends) {
+            if (vm.user.friends[i].sname == x.sname) {
+                return false
+            }
+        }
+        if (vm.user.sname == x.sname) {
+            return false
+        }
+        return true
+    }
     document.querySelector('#myfile').onchange = function () {
-  var preview = document.getElementById('main');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-  reader.addEventListener("load", function () {  
-    US.changePhoto(US.getNumber, reader.result);
-    vm.PhotoChange();  
-    document.getElementById('photosubmit').click();  
-  }, false);
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-           
+        var preview = document.getElementById('main');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+            US.changePhoto(US.getNumber, reader.result);
+            vm.PhotoChange();
+            document.getElementById('photosubmit').click();
+        }, false);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
 }])

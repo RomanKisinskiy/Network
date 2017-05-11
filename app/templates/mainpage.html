@@ -70,22 +70,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="x in mainpage.allUsers " ng-if="x.sname !==mainpage.user.sname &&    x.sname!==mainpage.user.friends[0].sname &&
-                                    x.sname!==mainpage.user.friends[1].sname &&
-                                    x.sname!==mainpage.user.friends[2].sname &&
-                                    x.sname!==mainpage.user.friends[3].sname &&
-                                    x.sname!==mainpage.user.friends[4].sname &&
-                                    x.sname!==mainpage.user.friends[5].sname &&
-                                    x.sname!==mainpage.user.friends[6].sname &&
-                                    x.sname!==mainpage.user.friends[7].sname &&
-                                    x.sname!==mainpage.user.friends[8].sname &&
-                                    x.sname!==mainpage.user.friends[9].sname &&
-                                    x.sname!==mainpage.user.friends[10].sname &&
-                                    x.sname!==mainpage.user.friends[11].sname ">
+
+                        <tr ng-repeat="x in mainpage.allUsers | filter : mainpage.filterFriends">
                             <td>{{x.name}}</td>
                             <td>{{x.sname}}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="mainpage.addFriend(x)" ng-init="mainpage.myF= x ">Add</button>
+<!--                                ng-init="mainpage.myF= x "-->
                             </td>
                         </tr>
                     </tbody>
